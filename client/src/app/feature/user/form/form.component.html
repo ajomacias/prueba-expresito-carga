@@ -1,0 +1,30 @@
+<div class="min-h-screen flex items-center justify-center">
+    <div class=" font-mono gap-1 text-slate-600 max-w-[1000px] flex flex-col w-full p-2">
+      <h1 class="text-5xl text-center w-full text-bold " >Usuario</h1>
+       <p class="text-center w-full" >Bievenido a la seccion de formulario aqui podras crear ver y actualizar usuarios 😄​</p>
+       <label  for="">Nombre</label>
+      <input 
+      autocomplete="off"
+      [(ngModel)]="user.name"
+      placeholder="escriba el nombre del usuario" 
+      class="w-full p-2 border-b border-b-slate-600 leading-4 focus:border-b-blue-500 focus:outline-none bg-slate-100" type="text">
+      <label  for="">Edad</label>
+      <input
+      autocomplete="off"
+      [(ngModel)]="user.age"
+      placeholder="escriba la edad del usuario" 
+      class="w-full p-2 border-b border-b-slate-600 leading-4 focus:border-b-blue-500 focus:outline-none bg-slate-100"
+      type="number"
+
+      >
+      <label  for="">Descripcion</label>
+      <input
+      autocomplete="off"
+      [(ngModel)]="user.detail"
+      placeholder="escribe una pequena descripcion"  
+      class="w-full p-2 border-b border-b-slate-600 leading-4 focus:border-b-blue-500 focus:outline-none bg-slate-100" type="text">
+     <div class="w-full gap-2 mt-2 flex wrap text-white" > 
+      <button (click)="handlerClickAccept()" class="w-6/12 p-2 text-center hover:bg-slate-500 bg-slate-600" >Aceptar!</button>
+      <button (click)="handlerClickCancel()" class="w-6/12 p-2 hover:bg-red-300 text-center bg-red-400" >Cancelar!</button>
+    </div>
+  </div>

@@ -1,0 +1,31 @@
+@url=http://localhost:3000/api/prueba-tecnica/user
+
+####
+GET {{url}}
+
+####
+GET {{url}}/search/635b4aff6c5eb458ebe1434c
+
+#####
+POST {{url}}
+Content-Type: application/json
+
+{
+    "name" : "Anderson Macias",
+    "detail" : "Soy ander ​✌️​🙃​",
+    "age" : 19
+}
+
+#####
+PUT {{url}}
+Content-Type: application/json
+
+{
+    "_id" : "635b1f825936f142257e40fe",
+    "name" : "Anderson Maciasss",
+    "detail" : "Soy ander ​✌️​🙃​",
+    "age" : 19
+}
+
+######
+DELETE {{url}}/635b1f825936f142257e40fe
