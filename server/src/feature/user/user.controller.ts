@@ -77,7 +77,7 @@ export async function update (req :R, res : Res, next : N ){
 
         if(!find) return next({ status : 404, message : 'user not found' });
 
-        const updateUser = await User.update(user);
+        const updateUser = await User.findByIdAndUpdate(find, user);
 
 
         res.json({ success : true, data : updateUser });

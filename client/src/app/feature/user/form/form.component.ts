@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params, Router } from '@angular/router';
-import { User } from '../types/user';
+import { errorUtils } from 'src/app/utils/error';
 import { initialUserSave, UserSaveDto } from '../types/userSaveDto';
 import { UserService } from '../user.service';
 
@@ -26,18 +26,19 @@ export class FormComponent implements OnInit {
   }
 
   private getUser(params : Params){
-   console.log(params['user'])
     const id = params['user'] || null;
 
     if(!id) return;
 
     this.userService.find(id).subscribe(
-      (res)=>{
-        if(!res.success) console.log('error to load user')
-        else this.user= res.data as UserSaveDto
-      });
-  }
+      {
+        next : (res)=> this.user = res.data as UserSaveDto,
+        error : (err)=>console.log(errorUtils.covertErrorToResponseAPI(err).error)
+      }
 
+    )
+  }
+  
   public handlerClickAccept(){
    
     this.saveOrUpdate();
@@ -61,20 +62,20 @@ export class FormComponent implements OnInit {
 
   private save(){
     this.userService.save(this.user).subscribe(
-      (res)=>{
-        if(!res.success) console.log(res.data)
-        else this.router.navigate(['/user'])
-        
+      {
+        next : (_)=> this.router.navigateByUrl('/user'),
+        error : (err)=>console.log(errorUtils.covertErrorToResponseAPI(err).error)
+
       }
     )
   }
 
   private update(){
     this.userService.update(this.user).subscribe(
-      (res)=>{
-        if(!res.success) console.log(res.data)
-        else this.router.navigate(['/user'])
-      }
+     {
+      next : (_)=> this.router.navigateByUrl('/user'),
+      error : (err)=>console.log(errorUtils.covertErrorToResponseAPI(err).error)
+     }
     )
   }
 
